@@ -3,12 +3,14 @@
     <head>
     <title>Boards</title>
     <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
-    <link rel="stylesheet" href="boards.css">
+    <link rel="stylesheet" href="/boards.css">
     </head>
     <body>
         <header>
             <h1>Kanban</h1>
-            <button>Add member</button>
+            <form action="/members/new">
+                <button type="submit">Add member</button>
+            </form>
         </header>
         <main>
            <section>
@@ -19,9 +21,9 @@
                     </form>
                 </div>
                 <%boards.each do |board|%> 
-                    <div class="board">
+                    <a href="/board/<%=board.id%>" class="board">
                         <h3><%=board.title%></h3>
-                    </div>
+                    </a>
                 <%end%>
            </section> 
         </main>

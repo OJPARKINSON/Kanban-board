@@ -27,7 +27,7 @@ header h1 {
     margin: 2vh;
     color: white;
 }
-header button {
+header form, header form button {
     grid-column-start: 8;
     height: 50%;
     width: 75%;

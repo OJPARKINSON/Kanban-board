@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Boards</title>
+    <title>Members</title>
     <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
-    <link rel="stylesheet" href="boards.css">
+    <link rel="stylesheet" href="/members.css">
     </head>
     <body>
         <header>
             <h1>Kanban</h1>
-            <button>Add member</button>
         </header>
         <main>
            <section>
-                <div class="board">
-                    <form action="/boards" method="post">
-                        <input type="text" name="title">
-                        <button>Create board</button>
+                <div class="signUp">
+                    <form action="/members/new" method="post">
+                        <input type="text" name="name">
+                        <button>Sign up</button>
                     </form>
                 </div>
-                <%boards.each do |board|%> 
-                    <div class="board">
-                        <h3><%=board.title%></h3>
-                    </div>
-                <%end%>
+
            </section> 
         </main>
     </body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Boards</title>
+        <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0,user-scalable=0">
+        <link rel="stylesheet" href="/board.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Kanban</h1>
+            <h2><%=board.title%></h2>
+            <button onclick="toggle()">Add task</button>
+        </header>
+        <main>
+           <section>
+                <div class="columns" id="inbox">
+                    <h3>Inbox:</h3>
+                    <%board.tasks.each do |task|%> 
+                        <p id="<%=task.id%>"><%=task.text%></p>
+                    <%end%>
+                </div>
+                <div class="columns" id="doing">
+                    <h3>Doing:</h3>
+                </div>
+                <div class="columns" id="done">
+                    <h3>Done:</h3>
+                </div>
+           </section> 
+        </main>
+        <section id="model">
+            <form action="/board/<%=board.id%>/tasks" method="post">
+                <h1>New task</h1>
+                <button onclick="toggle()">close</button>
+                <input type="text" name="text" required>
+                <input type="submit" value="Add task"/>
+            </form>
+        </section>
+        <script>
+            $("#model").hide()
+            let open = false;
+            function toggle() {
+                open = !open;
+                if (open) {
+                    $("#model").show()
+                } else {
+                    $("#model").hide()
+                }
+            }
+            $("p").draggable();
+        </script>
+    </body>
+</html>
